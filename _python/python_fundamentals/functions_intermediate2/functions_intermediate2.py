@@ -48,12 +48,12 @@ students = [
 
 
 def iterateDictionary(some_list):
-    for student in some_list:
+    for person in some_list:
         print(
             "first_name -",
-            student["first_name"] + ",",
+            person["first_name"] + ",",
             "last_name -",
-            student["last_name"],
+            person["last_name"],
         )
 
 
