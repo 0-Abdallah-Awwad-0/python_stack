@@ -1,5 +1,25 @@
-# Chaining Method 
- 
-This assignment focuses on understanding and implementing method chaining in Python classes. 
-By returning self from class methods, multiple methods can be called together in a clean and readable way. 
-The assignment demonstrates how chaining improves code organization and readability when working with objects. 
+# Chaining Method Assignment
+
+This assignment practices method chaining in Python.
+
+## What is Method Chaining?
+
+Method chaining means calling multiple methods on the same object in one line.
+
+Example:
+user.make_deposit(100).make_withdraw(50).display_user_balance()
+
+This works because methods return self.
+
+## Why use return self?
+
+return self returns the current object, allowing another method to continue on the same object.
+
+## Purpose
+
+This assignment practices:
+- Object-Oriented Programming
+- Methods
+- self
+- Method chaining
+- Cleaner code structure

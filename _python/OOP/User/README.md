@@ -1,5 +1,39 @@
-# User 
- 
-This assignment focuses on creating a User class and practicing object oriented programming fundamentals in Python. 
-The class stores user information and includes methods for deposits, withdrawals, displaying balances, and transferring money between users. 
-The assignment helps build a better understanding of attributes, methods, and interactions between multiple objects. 
+# User Assignment
+
+This assignment practices creating and using a User class in Python.
+
+## Features
+
+Each user has:
+- Name
+- Email
+- Balance
+
+## Methods
+
+### make_deposit(amount)
+Adds money to the user's balance.
+
+### make_withdraw(amount)
+Subtracts money from the user's balance.
+
+### display_user_balance()
+Displays the user's balance.
+
+### transfer_money(other_user, amount)
+Transfers money between users.
+
+## Method Chaining
+
+Methods return self to allow chaining.
+
+## Purpose
+
+This assignment practices:
+- Classes
+- Objects
+- Attributes
+- Methods
+- self
+- Method chaining
+- Object interaction
