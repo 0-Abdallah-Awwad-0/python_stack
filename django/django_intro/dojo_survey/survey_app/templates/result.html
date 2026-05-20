@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Result</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="container">
+        <h1>Submitted Info</h1>
+
+        <div class="result-box">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Dojo Location:</strong> {{ location }}</p>
+            <p><strong>Favorite Language:</strong> {{ language }}</p>
+            <p><strong>Experience:</strong> {{ experience }}</p>
+
+            <p><strong>Interests:</strong></p>
+            <ul>
+                {% for interest in interests %}
+                    <li>{{ interest }}</li>
+                {% empty %}
+                    <li>No interests selected</li>
+                {% endfor %}
+            </ul>
+
+            <p><strong>Comment:</strong> {{ comment }}</p>
+        </div>
+
+        <a href="/" class="btn">Go Back</a>
+    </main>
+
+</body>
+</html>
