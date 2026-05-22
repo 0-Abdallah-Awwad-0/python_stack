@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main class="container">
+
+        <h1>Counter Assignment</h1>
+
+        <div class="box">
+            <h2>Page Visits:</h2>
+            <p>{{ request.session.visits }}</p>
+        </div>
+
+        <div class="box">
+            <h2>Counter Value:</h2>
+            <p>{{ request.session.counter }}</p>
+        </div>
+
+        <div class="buttons">
+            <a href="/destroy_session/" class="btn red">Reset</a>
+            <a href="/add_two/" class="btn blue">+2</a>
+        </div>
+
+        <form action="/custom_increment/" method="POST">
+            {% csrf_token %}
+
+            <label>Custom Increment:</label>
+            <input type="number" name="amount" required>
+
+            <button type="submit">Add Custom Amount</button>
+        </form>
+
+    </main>
+
+</body>
+</html>
