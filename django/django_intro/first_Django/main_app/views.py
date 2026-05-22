@@ -5,12 +5,15 @@ from django.http import JsonResponse
 def root(request):
     return redirect("/blogs")
 
+# method index
 def index(request):
     return HttpResponse("placeholder to later display a list of all blogs")
 
+# method new
 def new(request):
     return HttpResponse("placeholder to display a new form to create a new blog")
 
+# this one will redirect for the landing page
 def create(request):
     return redirect("/")
 
@@ -23,6 +26,7 @@ def edit(request,number):
 def destroy(request,number):
     return redirect("/blogs")
 
+# the java script object response 
 def jres(request):
     book={
         "title" : "Coffe",

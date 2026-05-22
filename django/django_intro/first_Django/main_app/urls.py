@@ -2,12 +2,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('',views.root),
+    path('',views.root), #landing page with no routes
     path('blogs/',views.index),
     path('blogs/new/',views.new),
     path('blogs/create/',views.create),
     path('blogs/<int:number>/',views.show),
     path('blogs/<int:number>/edit/',views.edit),
-    path('blogs/<int:number>/delete/',views.destroy),
-    path('blogs/json/',views.jres),
+    path('blogs/<int:number>/delete/',views.destroy),#will call method destroy
+    path('blogs/json/',views.jres), #this will give you json response
 ]

@@ -1,0 +1,86 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ninja Gold</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <main>
+
+        <section class="top">
+            <h1>Ninja Gold Game</h1>
+
+            <div class="gold-box">
+                <h2>Your Gold:</h2>
+                <p>{{ request.session.gold }}</p>
+            </div>
+        </section>
+
+        <section class="places">
+
+            <div class="card">
+                <h2>Farm</h2>
+                <p>Earns 10 - 20 gold</p>
+
+                <form action="/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="location" value="farm">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Cave</h2>
+                <p>Earns 5 - 10 gold</p>
+
+                <form action="/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="location" value="cave">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>House</h2>
+                <p>Earns 2 - 5 gold</p>
+
+                <form action="/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="location" value="house">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Quest</h2>
+                <p>Earns/Takes 0 - 50 gold</p>
+
+                <form action="/process_money/" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="location" value="quest">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+
+        </section>
+
+        <section class="activities">
+            <h2>Activities:</h2>
+
+            <div class="activity-box">
+                {% for activity in request.session.activities %}
+                    <p class="{{ activity.color }}">{{ activity.message }}</p>
+                {% endfor %}
+            </div>
+        </section>
+
+        <a href="/reset/" class="reset">Reset Game</a>
+
+    </main>
+
+</body>
+</html>

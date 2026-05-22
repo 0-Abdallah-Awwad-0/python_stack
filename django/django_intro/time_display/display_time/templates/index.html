@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    {%load static %}
+    {%load static %}#so that it can access the static folder inside the project
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <body>
     <main>
         <h1>Current Time and Date</h1>
-        <h2>{{time}}</h2>
+        <h2>{{time}}</h2>#this will import the time from the dictionary
     </main>
 </body>
 </html>
