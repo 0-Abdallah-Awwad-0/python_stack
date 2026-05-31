@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Great Number Game</title>
+    <link rel="stylesheet" href="{% static 'game/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to the Great Number Game!</h1>
+
+        <p>I am thinking of a number between 1 and 100.</p>
+        <p>Take a guess!</p>
+
+        <p class="attempts">Attempts: {{ attempts }} / 5</p>
+
+        {% if status %}
+            {% if won %}
+                <div class="message correct">
+                    {{ status }}
+                </div>
+            {% elif game_over %}
+                <div class="message lose">
+                    {{ status }}
+                </div>
+            {% else %}
+                <div class="message wrong">
+                    {{ status }}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if not game_over %}
+            <form action="{% url 'guess' %}" method="POST">
+                {% csrf_token %}
+                <input type="number" name="guess" min="1" max="100" required>
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
+
+        {% if won and not winner_saved %}
+            <form action="{% url 'save_winner' %}" method="POST" class="winner-form">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Enter your name">
+                <button type="submit">Save Winner</button>
+            </form>
+        {% endif %}
+
+        {% if game_over %}
+            <a href="{% url 'reset' %}" class="play-again">Play Again</a>
+        {% endif %}
+
+        <br>
+
+        <a href="{% url 'leaderboard' %}" class="leaderboard-link">View Leaderboard</a>
+    </div>
+
+</body>
+</html>

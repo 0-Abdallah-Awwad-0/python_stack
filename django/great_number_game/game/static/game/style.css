@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 500px;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.attempts {
+    font-weight: bold;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 180px;
+    border: 2px solid black;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #222;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+.message {
+    width: 250px;
+    min-height: 100px;
+    margin: 20px auto;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrong {
+    background-color: red;
+}
+
+.correct {
+    background-color: green;
+}
+
+.lose {
+    background-color: darkred;
+}
+
+.play-again,
+.leaderboard-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #222;
+    color: white;
+    text-decoration: none;
+}
+
+.play-again:hover,
+.leaderboard-link:hover {
+    background-color: #444;
+}
+
+.winner-form {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 10px;
+}

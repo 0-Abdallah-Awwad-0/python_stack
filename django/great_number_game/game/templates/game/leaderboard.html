@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="{% static 'game/style.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Leaderboard</h1>
+
+        {% if leaderboard %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Attempts</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for winner in leaderboard %}
+                        <tr>
+                            <td>{{ winner.name }}</td>
+                            <td>{{ winner.attempts }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No winners yet.</p>
+        {% endif %}
+
+        <a href="{% url 'home' %}" class="play-again">Back to Game</a>
+    </div>
+
+</body>
+</html>
