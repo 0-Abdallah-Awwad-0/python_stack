@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create</title>
+</head>
+<body>
+    <h1>Add a New Show</h1>
+    <a href="shows">Go Back</a>
+    <form action="/shows/create" method="post">
+        {% csrf_token %}
+        <label for="text">Title</label>
+        <input type="text" name="title">
+        <label for="text">Network</label>
+        <input type="text" name="network">
+        <label for="text">Release Date</label>
+        <input type="date" name="release_date">
+        <label for="text">Description</label>
+        <textarea name="desc"></textarea>
+        <button type="submit">create</button>
+    </form>
+</body>
+</html>

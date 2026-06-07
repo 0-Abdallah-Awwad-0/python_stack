@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dojo Survey</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px;
+            border: 2px solid black;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Dojo Survey</h1>
+
+        <form action="/result" method="POST">
+            {% csrf_token %}
+
+            <label>Your Name:</label>
+            <input type="text" name="name">
+
+            <label>Dojo Location:</label>
+            <select name="location">
+                <option value="Ramallah">Ramallah</option>
+                <option value="Nablus">Nablus</option>
+                <option value="Hebron">Hebron</option>
+                <option value="Gaza">Gaza</option>
+            </select>
+
+            <label>Favorite Language:</label>
+            <select name="language">
+                <option value="Python">Python</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Java">Java</option>
+                <option value="C#">C#</option>
+            </select>
+
+            <label>Comment:</label>
+            <textarea name="comment"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

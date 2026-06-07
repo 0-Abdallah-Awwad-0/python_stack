@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dojos and Ninjas</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        .forms {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        form {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        input, select, textarea {
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dojo-list {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        .dojo-card {
+            border: 2px solid black;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .dojo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete-btn {
+            background-color: red;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dojos and Ninjas</h1>
+
+    <div class="forms">
+
+        <form action="{% url 'create_dojo' %}" method="POST">
+            {% csrf_token %}
+
+            <h2>Add a Dojo</h2>
+
+            <input type="text" name="name" placeholder="Dojo Name" required>
+
+            <input type="text" name="city" placeholder="City" required>
+
+            <input type="text" name="state" placeholder="State" maxlength="2" required>
+
+            <textarea name="desc" placeholder="Description"></textarea>
+
+            <button type="submit">Add Dojo</button>
+        </form>
+
+        <form action="{% url 'create_ninja' %}" method="POST">
+            {% csrf_token %}
+
+            <h2>Add a Ninja</h2>
+
+            <input type="text" name="first_name" placeholder="First Name" required>
+
+            <input type="text" name="last_name" placeholder="Last Name" required>
+
+            <select name="dojo_id" required>
+                <option value="">Select a Dojo</option>
+
+                {% for dojo in all_dojos %}
+                    <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Add Ninja</button>
+        </form>
+
+    </div>
+
+    <hr>
+
+    <h2>All Dojos</h2>
+
+    <div class="dojo-list">
+
+        {% for dojo in all_dojos %}
+            <div class="dojo-card">
+
+                <div class="dojo-header">
+                    <h3>Ninjas at the {{ dojo.name }} - {{ dojo.ninjas.count }}</h3>
+
+                    <a href="{% url 'delete_dojo' dojo.id %}" class="delete-btn">Delete</a>
+                </div>
+
+                <p><strong>Location:</strong> {{ dojo.city }}, {{ dojo.state }}</p>
+
+                <p><strong>Description:</strong> {{ dojo.desc }}</p>
+
+                <ul>
+                    {% for ninja in dojo.ninjas.all %}
+                        <li>{{ ninja.first_name }} {{ ninja.last_name }}</li>
+                    {% empty %}
+                        <li>No ninjas yet.</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        {% empty %}
+            <p>No dojos yet.</p>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+from dojo_ninjas_app.models import Dojo, Ninja
+
+dojo1 = Dojo.objects.create(name="Coding Dojo", city="San Jose", state="CA")
+dojo2 = Dojo.objects.create(name="Python Dojo", city="Seattle", state="WA")
+dojo3 = Dojo.objects.create(name="Django Dojo", city="New York", state="NY")
+
+Dojo.objects.all()
+
+dojo1.delete()
+dojo2.delete()
+dojo3.delete()
+
+Dojo.objects.all()
+
+dojo1 = Dojo.objects.create(name="Web Dojo", city="Chicago", state="IL")
+dojo2 = Dojo.objects.create(name="Backend Dojo", city="Dallas", state="TX")
+dojo3 = Dojo.objects.create(name="Fullstack Dojo", city="Miami", state="FL")
+
+Ninja.objects.create(first_name="Ahmed", last_name="Ali", dojo=dojo1)
+Ninja.objects.create(first_name="Omar", last_name="Saleh", dojo=dojo1)
+Ninja.objects.create(first_name="Khaled", last_name="Hassan", dojo=dojo1)
+
+Ninja.objects.create(first_name="Sami", last_name="Nasser", dojo=dojo2)
+Ninja.objects.create(first_name="Yousef", last_name="Mansour", dojo=dojo2)
+Ninja.objects.create(first_name="Adam", last_name="Awwad", dojo=dojo2)
+
+Ninja.objects.create(first_name="Lina", last_name="Kareem", dojo=dojo3)
+Ninja.objects.create(first_name="Mona", last_name="Hadi", dojo=dojo3)
+Ninja.objects.create(first_name="Sara", last_name="Zaid", dojo=dojo3)
+
+dojo1.ninjas.all()
+
+Dojo.objects.last().ninjas.all()
+
+Ninja.objects.last().dojo
